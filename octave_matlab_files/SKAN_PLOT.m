@@ -1,0 +1,23 @@
+%
+% Function to plot any 2d array, but normalises each line and offsets them by one.
+%
+
+function [] = SKAN_PLOT(thing)
+
+figure()
+
+channels = size(thing,1);
+length = size(thing,2);
+
+
+
+for i = 1:channels
+    
+    if max(abs(thing(i,:))) ~= 0 
+        plot(thing(i,:)/max(abs(thing(i,:))) + 2*(i - 1) )
+    else plot(zeros(1,length) + 2*(i - 1))
+    end
+    axis([ 0, length, -1, 2*(channels + 1) ])
+    hold on
+    
+end
